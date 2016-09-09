@@ -3,12 +3,51 @@
   <head>
     <title>AirProject</title>
     <%= csrf_meta_tags %>
-
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+
+	  <nav>
+	    <div class="nav-wrapper">
+	      <a href="#!" class="brand-logo">Logo</a>
+	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+	      <ul class="right hide-on-med-and-down">
+		        <% if current_user %>
+	        		<li><%=link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+	        		<li><%=link_to 'Flights', user_flights_path(current_user.id) %></li>
+		        <% else %>
+		        	<li><%=link_to 'Sign In', new_user_session_path %></li>
+	        	<% end %>      
+	        <li><a href="collapsible.html">Javascript</a></li>
+	        <li><a href="mobile.html">Mobile</a></li>
+	      </ul>
+	      <ul class="side-nav" id="mobile-demo">
+		        <% if current_user %>
+	        		<li><%=link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+	        		<li><%=link_to 'Flights', user_flights_path(current_user.id) %></li>
+
+		        <% else %>
+		        	<li><%=link_to 'Sign In', new_user_session_path %></li>
+	        	<% end %>  
+	        <li><a href="badges.html">Components</a></li>
+	        <li><a href="collapsible.html">Javascript</a></li>
+	        <li><a href="mobile.html">Mobile</a></li>
+	      </ul>
+	    </div>
+	  </nav>
+	  <div class='container'>
+   		 <%= yield %>	
+	  </div>
+
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    	  $(".button-collapse").sideNav();
+    	});
+
+     </script>
   </body>
 </html>
