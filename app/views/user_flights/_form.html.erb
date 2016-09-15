@@ -1,0 +1,10 @@
+<%= form_for [@user, @flight] do |f| %>
+        <%= f.label :airport %>
+        <%= f.text_field :airport %>
+        <br>
+        <%= f.label :gate %>
+        <%= f.text_field :gate %>
+        <br>
+<%= f.submit "Save Flight", class: 'waves-effect waves-light btn'%>
+
+<% end %>

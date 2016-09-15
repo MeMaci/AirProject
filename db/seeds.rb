@@ -12,5 +12,5 @@ clark, tony, rick = User.create!([
 	])
 
 
-clark.flights.create!([{airport:'MIA', gate:'H10'}])
+clark.flights.create!([{airport:'MIA', gate:'H10'}, {airport:'NY', gate:'G5'}])
 tony.flights.create!([{airport:'MIA', gate:'G10'}])

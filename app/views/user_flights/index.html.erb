@@ -1,4 +1,4 @@
-
+<h1><%= current_user.name %></h1>
 
 
   <div class="collection">
@@ -7,12 +7,10 @@
     <a href="#!" class="collection-item">
 
 		<% @flights.each do |flight|%>
-			<li><%=flight.airport%> 
-				<span class="new badge">
-			<%=flight.gate%></li>
-			<% end %>
-   				 </span></a>
+		<li><%=flight.airport%> 
+	<span class="new badge">
+		<%=flight.gate%></li>
+		<% end %>
+   	</span></a>
  </div>
    	<%=link_to "Add Flight", new_flight_path%>
-
-

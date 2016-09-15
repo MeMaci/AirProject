@@ -1,2 +1,7 @@
-<h2>Hello Traveler</h2>
+Hello <% if user_signed_in? %>
+<%= current_user.name %>
+<% else %>
+	Traveller
+<% end %>
+
 <p>Time to FLY : <%= Time.now %></p>

@@ -1,0 +1,2 @@
+module UserFlightsHelper
+end
