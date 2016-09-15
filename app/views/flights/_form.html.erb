@@ -8,3 +8,48 @@
 <%= f.submit "Save Flight", class: 'waves-effect waves-light btn'%>
 
 <% end %>
+
+ <script>
+            var apiKey = 'ad16c53eec',
+                apca,
+                params = { limit: 7 };
+                params.key = apiKey;
+                params.secret = 'be05af1f6f1e227';
+                initAutoSelect();
+
+            function initAutoSelect() {
+                apca = new apc('multi', params);
+                var autocompleteObj = {
+                    source: function( request, response ) {
+                        // make the request
+                        apca.request( $('#flight_airport').val() );
+                        apca.onSuccess = function (data) {
+                            if (data.status) { // success
+                                response( $.map( data.airports, function( item ) {
+                                    return {
+                                        label: item.name + ' (' + item.iata + ')',
+                                        value: item.name + ' (' + item.iata + ')',
+                                        code: item.iata
+                                    }
+                                }));
+                            } else { // no results
+                                response();
+                            }
+                        };
+                        apca.onError = function (data) {
+                            response();
+                            console.log(data.message);
+                        };
+                    },
+                    select: function( event, ui ) {
+                        // do something for click event
+                        console.log(ui.item.code);
+                        setTimeout(function() {
+                        	$('#flight_airport').val(ui.item.code);
+                        }, 1)
+                        // $('#flight_airport').val(ui.item.code);
+                    }
+                }
+                $("#flight_airport").autocomplete(autocompleteObj);                
+            }
+    </script>

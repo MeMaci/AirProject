@@ -1,18 +1,18 @@
 
 
-
-  <div class="collection">
+ <div class="collection">
 
     <a href="#!" class="collection-item">AIRPORT<span class="badge">GATE</span></a>
-    <a href="#!" class="collection-item">
-
-		<% @flights.each do |flight|%>
-			<li><%=flight.airport%> 
-				<span class="new badge">
-			<%=flight.gate%></li>
-			<% end %>
-   				 </span></a>
+	<% @flights.each do |flight|%>
+    <a href="<%=user_flight_path(current_user.id, flight.id)%>" class="collection-item">
+		<li>
+			<%=flight.airport%> 
+			<span class="new badge">
+				<%=flight.gate%>
+			</span>
+		</li>
+   	</a>
+   	<% end %>
  </div>
    	<%=link_to "Add Flight", new_flight_path%>
-
 
