@@ -25,10 +25,10 @@ class FlightsController < ApplicationController
 	def show
 		@flight = Flight.find_by_id(params[:id])
         @data = @flight
-        url = 'http://apps.tsa.dhs.gov/mytsawebservice/GetAirportCheckpoints.ashx?output=json&ap=' + @flight.airport
-        @data = JSON.parse(Net::HTTP.get(URI.parse(url)))[0]
-        # p@data
-        data =  JSON.parse(Net::HTTP.get(URI.parse(url)))[0]
+        url = 'http://apps.tsa.dhs.gov/MyTSAWebService/GetWaitTimes.ashx?&output=json&ap=' + @flight.airport
+        @data = JSON.parse(Net::HTTP.get(URI.parse(url)))['WaitTimes'][0]['WaitTimeIndex']
+        # byebug
+        # @data =  JSON.parse(Net::HTTP.get(URI.parse(url)))[0]
         # airport =  data[:airport]
         # p airport
 		
