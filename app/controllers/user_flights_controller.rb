@@ -2,7 +2,6 @@ class UserFlightsController < ApplicationController
   def index
   	 @user = User.find(params[:user_id])
   	 @flights = @user.flights.all
-
   	 # @flights = current_user.flights
 
   end
@@ -14,13 +13,13 @@ class UserFlightsController < ApplicationController
 	
   end
   def create
-      @user = User.find(params[:user_id])
-      @flight = Flight.find(params[:flight_id])
-        if @user.flights.push(@flight)
-          redirect_to user_flights_path(current_user)
-        else
-          render 'new'
-        end
+      # @user = User.find(params[:user_id])
+      # @flight = Flight.find(params[:flight_id])
+      #   if @user.flights.push(@flight)
+      #     redirect_to user_flights_path(current_user), notice: "For accurate information check your status same day!"
+      #   else
+      #     render 'new'
+      #   end
 
   end
   def show
