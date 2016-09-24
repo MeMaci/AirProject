@@ -24,8 +24,7 @@ class FlightsController < ApplicationController
 	def destroy
 		flash[:sucess] = "Flight Deleted"
 
-		@user = User.find(params[:user_id])
-		@flight = @user.flights.find(params[:id])
+		@flight = current_user.flights.find(params[:id])
 
 		@flight.destroy
 		redirect_to flights_path(current_user)
@@ -47,8 +46,19 @@ class FlightsController < ApplicationController
 	def show
 		@flight = Flight.find_by_id(params[:id])
         @data = @flight
-        url = 'http://apps.tsa.dhs.gov/MyTSAWebService/GetWaitTimes.ashx?&output=json&ap=' + @flight.airport
-        @data = JSON.parse(Net::HTTP.get(URI.parse(url)))['WaitTimes'][0]['WaitTimeIndex']	
+        p request.location
+        tsa_checkpoint_url = 'http://apps.tsa.dhs.gov/MyTSAWebService/GetWaitTimes.ashx?&output=json&ap=' + @flight.airport
+        tsa_checkpoint_response = JSON.parse(Net::HTTP.get(URI.parse(tsa_checkpoint_url)))
+       
+
+        tsa_airport_url = 'http://apps.tsa.dhs.gov/mytsawebservice/GetAirportCheckpoints.ashx?ap=' + @flight.airport
+        tsa_airport_response = JSON.parse(Net::HTTP.get(URI.parse(tsa_airport_url)))[0]["airport"]
+
+        @wait_time = tsa_checkpoint_response['WaitTimes'][0]['WaitTimeIndex']	
+        @airport_position = {
+        	:airport_latitude => tsa_airport_response['latitude'],
+        	:airport_longitude => tsa_airport_response['longitude']
+        }
 	end
 
 	private

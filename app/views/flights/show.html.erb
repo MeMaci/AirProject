@@ -1,3 +1,17 @@
 <h3> Hi <%= current_user.name %> </h3>
 
-<p> Average wait time at airport checkpoint will be : <%= @data %> mins <p>
+<p> Average wait time at airport checkpoint will be : <span id="wait_time"><%= @wait_time %></span> mins <p>
+<p><%=@airport_position%></p>
+
+
+<script>
+	var data = {
+		airport_position: {
+			latitude: <%= @airport_position[:airport_latitude]%>,
+			longitude: <%= @airport_position[:airport_longitude]%>
+		},
+		tsa_wait_time : <%= @wait_time %>
+	};
+	console.log("Airpot pos = ", data)
+</script>
+

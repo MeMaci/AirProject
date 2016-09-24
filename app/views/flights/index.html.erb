@@ -11,7 +11,8 @@
 		<li>
 			<%=flight.airport%> 
 			<span class="new badge">
-				<%=flight.gate%>
+				<%=flight.gate%><br>
+				<%=link_to "Delete", '/flights/'+flight.id.to_s, method: :delete, data: { confirm: "Are you sure"} %>
 			</span>
 		</li>
    	</a>
