@@ -3,4 +3,5 @@ class WelcomeController < ApplicationController
 		@time = Time.now.strftime("%A")
 		
 	end
+
 end

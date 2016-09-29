@@ -1,23 +1,27 @@
-<p><%= flash[:notice] %></p>
 
 <h1><%= current_user.name %></h1>
 
 
  <div class="collection", class="highlight">
 
-    <a href="#!" class="collection-item">Airport<span class="badge">CheckInPoint</span></a>
+    <a href="#!" class="collection-item">Airport<span class="badge">Airline</span></a>
 	<% @flights.each do |flight|%>
-    <a href="<%=user_flight_path(current_user.id, flight.id)%>" class="collection-item">
-		<li>
+	<li class="collection-item">
+    	<a href="<%=user_flight_path(current_user.id, flight.id)%>" >
 			<%=flight.airport%> 
-			<span class="new badge">
+		</a>
+		<div class="badges">
+			<!-- <span class="new badge" data-badge-caption="">
 				<%=flight.gate%><br>
-				<%=link_to "Delete", '/flights/'+flight.id.to_s, method: :delete, data: { confirm: "Are you sure"} %>
-			</span>
-		</li>
-   	</a>
+			</span> -->
+				<a href='/flights/<%=flight.id.to_s%>' method='DELETE'>
+					<i class="material-icons">delete</i>
+				</a>
+		</div>
+   	</li>
    	<% end %>
  </div>
 
-   	<%=link_to "Add Flight", new_flight_path%>
 
+   	<%=link_to "Add Flight", new_flight_path%>
+<!-- TRYING NEW LAYOUT -->

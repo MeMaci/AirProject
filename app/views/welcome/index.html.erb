@@ -1,15 +1,28 @@
-Good Afternoon <% if user_signed_in? %>
-<%= current_user.name %>
-<% else %>
-<% end %>
 
 
 <div class="row">
-      <div class="col s12"><span class="flow-text">Be sure to allow enough time to check-in, not more just enough !</span></div>
-      <div class="col s6"><span class="flow-text">You dont want to guess?</span></div>
-      <div class="col s6"><span class="flow-text">You are at the right stop!</span></div>
-      <div class="col s12"><span class="flow-text">AirProject will give you the estimated time, from your location to your gate. <br> No need to rush on a <%= @time %> </span></div>
-      <div class="col s12"><span class="flow-text">Your time is limited, so dont waste it </span></div>
-</div>
+	<div class= "col s12">
+		<span class="flow-text">
+		<%= greet %></span> <% if user_signed_in? %>
+		<span class="flow-text"> <%= current_user.name %></span>
+		<% else %>
+		<% end %>
+		
+	</div>
+      <div class="col s6"><span class="flow-text">AirApp is designed to give the estimated time to check-in!</span></div>
+      <img class="materialboxed" data-caption="Enjoy being ontime with no rush!" width="750" src="http://pre14.deviantart.net/a735/th/pre/i/2005/179/1/3/airport_by_montereypark.jpg">
 
+
+              <div class="caption left-align">
+          <h3>Left Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      <div class="col s12"><span class="flow-text">Your time is limited, so WHY to waste! </span></div>
+      
+      <img class="materialboxed" data-caption="No more ugly suprises!" width="750" src="http://img12.deviantart.net/c2c1/i/2015/124/c/8/bologna_airport_nr_2_by_enricomiglino-d1tjs1m.jpg">
+
+      <div class="col s12"><span class="flow-text">AirProject will give you the estimated time, from your location to your gate. <br> WHO wants to rush on a <strong><%= @time %></strong> </span></div>
+      <img class="materialboxed" data-caption="Enjoy your flight..." width="750" src="http://img03.deviantart.net/8b9f/i/2015/125/4/b/friesland_airport_by_hdrpano-d1k34c1.jpg">
+      
+</div>
 

@@ -30,7 +30,7 @@
 	     <ul class="right hide-on-med-and-down">
 		        <% if current_user %>
 	        		<li><%=link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-	        		<li><%=link_to 'Flights', user_flights_path(current_user.id) %></li>
+	        		<li><%=link_to 'Departure', user_flights_path(current_user.id) %></li>
 		        <% else %>
 		        	<li><%=link_to 'Sign In', new_user_session_path %></li>
 	        	<% end %>      
@@ -40,7 +40,7 @@
 	      <ul class="side-nav" id="mobile-demo">
 		        <% if current_user %>
 	        		<li><%=link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-	        		<li><%=link_to 'Flights', user_flights_path(current_user.id) %></li>
+	        		<li><%=link_to 'Departure', user_flights_path(current_user.id) %></li>
 		        <% else %>
 		        	<li><%=link_to 'Sign In', new_user_session_path %></li>
 	        	<% end %>  
@@ -118,6 +118,12 @@
             </div>
           </div>
         </footer>
+<!-- FLAS NOTICE FOR SUCCESS -->
+        <% if flash[:notice] %>
+        <script>
+        	Materialize.toast('<%= flash[:notice] %>', 2000)
+        </script>
+        <%end%>
 	<!-- Scripts! -->
 	<script type="text/javascript">
     	$(document).ready(function(){
