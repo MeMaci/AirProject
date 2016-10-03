@@ -1,6 +1,30 @@
-<h3> Hi <%= current_user.name %> </h3>
 
-<p> Average wait time at airport checkpoint will be : <span id="wait_time"><%= @wait_time %></span> mins <p>
+
+
+  <div class="chip">
+  	<%= current_user.name %>
+    	<i class="close material-icons">close</i>
+  </div>
+<!-- <h3> Hi <%= current_user.name %> </h3> -->
+
+<p><strong>Wait time at <%= @flight.airport%> check-in : 
+	
+	<%if @wait_time === 0 %> No Data Available 
+	<%else%>
+		<%= @wait_time.round %> 
+		<p><strong>Total journey time: <span id="wait_time"><%= @wait_time.round %></span> mins </strong></p>
+	<%end%>	
+
+
+</strong></p>
+
+
+
+
+
+
+<!-- REFERANCE SCRIPT -->
+
 <p><%=@airport_position%></p>
 
 

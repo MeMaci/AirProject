@@ -1,27 +1,22 @@
 
-<h1><%= current_user.name %></h1>
 
 
- <div class="collection", class="highlight">
+      <ul class="collection with-header">
+        <li class="collection-header"><h4>Airport</h4></li>
 
-    <a href="#!" class="collection-item">Airport<span class="badge">Airline</span></a>
-	<% @flights.each do |flight|%>
-	<li class="collection-item">
-    	<a href="<%=user_flight_path(current_user.id, flight.id)%>" >
-			<%=flight.airport%> 
-		</a>
-		<div class="badges">
-			<!-- <span class="new badge" data-badge-caption="">
-				<%=flight.gate%><br>
-			</span> -->
-				<a href='/flights/<%=flight.id.to_s%>' method='DELETE'>
-					<i class="material-icons">delete</i>
+		  <% @flights.each do |flight|%>
+		    	<a href="<%=user_flight_path(current_user.id, flight.id)%>" class="collection-item">
+					<%=flight.airport%>
 				</a>
-		</div>
-   	</li>
-   	<% end %>
- </div>
+				<a href="<%=user_flight_path(current_user.id, flight.id)%>"><button class="btn waves-effect waves-light red" type="submit">View<i class="material-icons right">send</i></button></a>
+         		<a href="<%=user_flight_path(current_user.id, flight.id)%>" class="secondary-content", method: :delete ><button class="btn waves-effect waves-light red disabled" type="submit" >Delete<i class="material-icons right">delete</i></button></a>
+
+		  <% end %>
+      </ul>
+
+   	<%=link_to "Add New", new_flight_path%>
 
 
-   	<%=link_to "Add Flight", new_flight_path%>
+
+
 <!-- TRYING NEW LAYOUT -->

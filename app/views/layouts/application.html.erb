@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>AirProject</title>
-<!--   	<script src="https://use.fontawesome.com/7bcf6a64b0.js"></script> -->
-  	<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWfU7MX1c2hg5l42fecXZyhAdhyTm4Tt4libraries=places"></script> -->
-  	 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWfU7MX1c2hg5l42fecXZyhAdhyTm4Tt4&callback=initMap"
-  type="text/javascript"></script>
+  <title>SaveTime</title>
 
+<!--       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWfU7MX1c2hg5l42fecXZyhAdhyTm4Tt4&callback=initMap"
+    async defer></script> -->
+
+<!--   	<script src="https://use.fontawesome.com/7bcf6a64b0.js"></script> -->
+
+
+<!-- IMPORTANT -->
+
+ 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWfU7MX1c2hg5l42fecXZyhAdhyTm4Tt4&libraries=places" async defer></script>
 
 
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -24,7 +29,7 @@
 
 	  <nav>
 	    <div class="nav-wrapper">
-	       <a href="#!" class="brand-logo"><i class="material-icons">recent_actors</i>AirProject</a>
+	       <a href="#!" class="brand-logo"><i class="material-icons">av_timer</i>SaveTime</a>
       	<ul class="right hide-on-med-and-down"></ul>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 	     <ul class="right hide-on-med-and-down">
@@ -34,8 +39,7 @@
 		        <% else %>
 		        	<li><%=link_to 'Sign In', new_user_session_path %></li>
 	        	<% end %>      
-	        <li><a href="collapsible.html">Weather</a></li>
-	        <li><a href="mobile.html">Map</a></li>
+	
 	      </ul>
 	      <ul class="side-nav" id="mobile-demo">
 		        <% if current_user %>
@@ -44,8 +48,7 @@
 		        <% else %>
 		        	<li><%=link_to 'Sign In', new_user_session_path %></li>
 	        	<% end %>  
-	        <li><a href="collapsible.html">Weather</a></li>
-	        <li><a href="mobile.html">Map</a></li>
+
 	      </ul>
 	    </div>
 	  </nav>

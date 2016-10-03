@@ -1,5 +1,6 @@
 var user_position;
 
+
 $(document).ready(function(){
 	if ("geolocation" in navigator) {
 		console.log("geolocation is available!");
@@ -14,6 +15,9 @@ $(document).ready(function(){
 		alert("We do not have geolocation");
 	}
 });
+
+
+
 
 function onLocation(position){
 
@@ -71,9 +75,12 @@ function getTimeEstimate(position_params) {
 function handle_google_time_estimate(response, status) {
 	console.log(response);
 	var google_estimate = response.rows[0].elements[0].duration.value;
-	var total_time_estimate = (Math.floor(google_estimate / 60, 0)) + data.tsa_wait_time;
+	var total_time_estimate = ((Math.floor(google_estimate / 60, 0)) + data.tsa_wait_time);
+
 	$('#wait_time').text(total_time_estimate);
 }
+
+
 
 function onError(err){
 	console.log(err);
