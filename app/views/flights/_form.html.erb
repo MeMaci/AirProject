@@ -1,11 +1,15 @@
 
 
 <%= form_for [current_user, @flight] do |f| %>
-        <%= f.label :airport %>
+        <%= f.label :origin_airport %>
         <%= f.text_field :airport %>
         <br>
-        <%= f.label :airline %>
+ <!--        <%= f.label :airline %>
         <%= f.text_field :gate %>
+        <br> -->
+        <br>
+        <%= f.label :destination_airport %>
+        <%= f.text_field :destination %>
         <br>
 <%= f.submit "Save Flight", class: 'waves-effect waves-light btn'%>
 
@@ -54,6 +58,45 @@
                         // $('#flight_airport').val(ui.item.code);
                     }
                 }
-                $("#flight_airport").autocomplete(autocompleteObj);                
+                $("#flight_airport").autocomplete(autocompleteObj); 
+            }
+
+// WANT TO DUPLICATE AUTO COMPLETE ON DESTINATION             
+
+                function initAutoSelect() {
+                apca = new apc('multi', params);
+                var autocompleteObj = {
+                    source: function( request, response ) {
+                        // make the request
+                        apca.request( $('#flight_destination').val() );
+                        apca.onSuccess = function (data) {
+                            if (data.status) { // success
+                                response( $.map( data.airports, function( item ) {
+                                    return {
+                                        label: item.name + ' (' + item.iata + ')',
+                                        value: item.name + ' (' + item.iata + ')',
+                                        code: item.iata
+                                    }
+                                }));
+                            } else { // no results
+                                response();
+                            }
+                        };
+                        apca.onError = function (data) {
+                            response();
+                            console.log(data.message);
+                        };
+                    },
+                    select: function( event, ui ) {
+                        // do something for click event
+                        console.log(ui.item.code);
+                        setTimeout(function() {
+                            $('#flight_destination').val(ui.item.code);
+                        }, 1)
+                        // $('#flight_airport').val(ui.item.code);
+                    }
+                }
+                $("#flight_destination").autocomplete(autocompleteObj); 
+// WANT TO DUPLICATE AUTO COMPLETE ON DESTINATION             
             }
     </script>

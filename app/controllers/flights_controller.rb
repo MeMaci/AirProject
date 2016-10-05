@@ -5,8 +5,8 @@ class FlightsController < ApplicationController
 	require 'open-uri'
 
 	def index
-		@flights = current_user.flights
-		# @flights = Flight.all
+		@flights = current_user.flights.order(id: :desc)
+
 	end
 
 	def new
@@ -27,19 +27,19 @@ class FlightsController < ApplicationController
 
 	def destroy
 
-		flash[:notice] = "Flight Deleted"
-		@user = User.find(params[:user_id])
-		@flight = @user.flights.find(params[:id])
+		# flash[:notice] = "Flight Deleted"
+		# @user = User.find(params[:user_id])
+		@flight = current_user.flights.find(params[:id])
 
-		@flight.destroy
-		redirect_to user_flights_path(@user)
+		# @flight.destroy
+		# redirect_to flights_path(@user)
 		
 
 
-		# if @flight.destroy
-		# 	flash[:notice] = "Flight Deleted"
-		# 	redirect_to flights_path(current_user)
-		# end
+		if @flight.destroy
+			flash[:notice] = "Flight Deleted"
+			redirect_to flights_path
+		end
 		
 	end
 
@@ -151,7 +151,7 @@ class FlightsController < ApplicationController
 
 	def flight_params
 		params.require(:flight)
-			.permit(:airport, :gate)
+			.permit(:airport, :gate, :destination)
 	end
 
 end

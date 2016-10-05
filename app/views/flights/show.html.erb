@@ -1,22 +1,48 @@
 
-
-
+<!-- I HATE YOU -->
+<!-- 
   <div class="chip">
   	<%= current_user.name %>
     	<i class="close material-icons">close</i>
-  </div>
+  </div> -->
 <!-- <h3> Hi <%= current_user.name %> </h3> -->
 
-<p><strong>Wait time at <%= @flight.airport%> check-in : 
-	
-	<%if @wait_time === 0 %> No Data Available 
-	<%else%>
-		<%= @wait_time.round %> 
-		<p><strong>Total journey time: <span id="wait_time"><%= @wait_time.round %></span> mins </strong></p>
-	<%end%>	
 
+<div class="card-perfect">
+  <div class="card-perfect-header">
+    <img src="https://s-media-cache-ak0.pinimg.com/originals/3b/f0/77/3bf0775b0d234545d14a5941be966ab2.jpg"/>
+  </div>
+  <div class="card-perfect-content">
+    <h3><%=greet%> <br> <%=current_user.name%></h3>
+<!--     <h4>Wait time at <%= @flight.airport%> check-in :</h4> -->
+    <p>
+    		<%if @wait_time === 0 %> No Data Available 
+			<%else%>
+			    <h4>Estimated wait time at <%= @flight.airport%> check-in point will be <%= @wait_time.round %> mins </h4>
+			<p><strong>Your total journey will take <span id="wait_time"><%= @wait_time.round %></span> mins </strong></p>
+			<%end%>	
 
-</strong></p>
+    </p>
+  </div>
+  <div class="card-perfect-footer">
+    <ul>
+      <li>
+        <a href="#"><i class="fa fa-linkedin-square"></i></a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-facebook-square"></i></a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+      </li>
+
+    </ul>
+  </div>
+</div>
+
 
 
 
@@ -25,7 +51,7 @@
 
 <!-- REFERANCE SCRIPT -->
 
-<p><%=@airport_position%></p>
+<!-- <p><%=@airport_position%></p> -->
 
 
 <script>

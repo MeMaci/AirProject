@@ -29,8 +29,8 @@ function onLocation(position){
 		longitude : position.coords.longitude
 	};
 	console.log("FOUND USER ", user_position);
-	if (!user_position || !data.airport_position){
-		console.log("Missing Data", user_position, airport_position);
+	if (!user_position || !data || !data.airport_position){
+		console.log("Missing Data", user_position, data.airport_position);
 		return;
 	}
 	var position_params = {
