@@ -1,5 +1,5 @@
 
-<!-- I HATE YOU -->
+
 <!-- 
   <div class="chip">
   	<%= current_user.name %>
@@ -7,47 +7,53 @@
   </div> -->
 <!-- <h3> Hi <%= current_user.name %> </h3> -->
 
+<div class="row">
+<div class="col s12 m6">
+  <div class="card-perfect">
+    <div class="card-perfect-header">
+      <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i84Li1w3_Ngc/v0/-1x-1.jpg"/>
 
-<div class="card-perfect">
-  <div class="card-perfect-header">
-    <img src="https://s-media-cache-ak0.pinimg.com/originals/3b/f0/77/3bf0775b0d234545d14a5941be966ab2.jpg"/>
-  </div>
-  <div class="card-perfect-content">
-    <h3><%=greet%> <br> <%=current_user.name%></h3>
-<!--     <h4>Wait time at <%= @flight.airport%> check-in :</h4> -->
-    <p>
-    		<%if @wait_time === 0 %> No Data Available 
-			<%else%>
-			    <h4>Estimated wait time at <%= @flight.airport%> check-in point will be <%= @wait_time.round %> mins </h4>
-			<p><strong>Your total journey will take <span id="wait_time"><%= @wait_time.round %></span> mins </strong></p>
-			<%end%>	
 
-    </p>
-  </div>
-  <div class="card-perfect-footer">
-    <ul>
-      <li>
-        <a href="#"><i class="fa fa-linkedin-square"></i></a>
-      </li>
-      <li>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-      </li>
-      <li>
-        <a href="#"><i class="fa fa-facebook-square"></i></a>
-      </li>
-      <li>
-        <a href="#"><i class="fa fa-instagram"></i></a>
-      </li>
+    </div>
+    <div class="card-perfect-content">
+      <h3><%=greet%> <br> <%=current_user.name%></h3>
+  <!--     <h4>Wait time at <%= @flight.airport%> check-in :</h4> -->
+      <p>
+      	<%if @wait_time === 0 %> No Data Available 
+  			<%else%>
+  			  <h4>Estimated wait time at <%= @flight.airport%> check-in point will be <%= @wait_time.round %> mins </h4>
+  		  <p style="display:none;" id="total_journey"><strong>Your total journey will take <span id="wait_time"><%= @wait_time.round %></span> </strong></p>
+  			<%end%>	
+      </p>
+    </div>
+    <div class="card-perfect-footer">
+      <ul>
+        <li>
+          <a href="#"><i class="fa fa-linkedin-square"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-facebook-square"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+        </li>
 
-    </ul>
+      </ul>
+    </div>
   </div>
 </div>
 
-
-
-
-
-
+<div class="col s12 m6">
+  <div class="card-perfect light-blue lighten-5">
+      <div class="card-perfect-content">
+        <div id="weather"></div>
+      </div>
+  </div>
+</div>
+</div>
 
 <!-- REFERANCE SCRIPT -->
 
@@ -56,10 +62,14 @@
 
 <script>
 	var data = {
-		airport_position: {
-			latitude: <%= @airport_position[:airport_latitude]%>,
-			longitude: <%= @airport_position[:airport_longitude]%>
+		airport_position : {
+			latitude: <%= @airport_origin_position[:airport_latitude]%>,
+			longitude: <%= @airport_origin_position[:airport_longitude]%>
 		},
+    destination_airport_position : {
+      latitude: <%= @airport_destination_position[:airport_latitude]%>,
+      longitude: <%= @airport_destination_position[:airport_longitude]%>
+    },
 		tsa_wait_time : <%= @wait_time %>
 	};
 	console.log("Airpot pos = ", data)

@@ -64,7 +64,7 @@ class FlightsController < ApplicationController
 
 	        if tsa_checkpoint_get === "Bad Request"
 	        	@wait_time = 0
-	        	@airport_position = {
+	        	@airport_origin_position = {
 		        	:wait_time => 0,
 		        	:airport_latitude => 0,
 		        	:airport_longitude => 0
@@ -83,16 +83,36 @@ class FlightsController < ApplicationController
 
 
 
-		        @airport_position = {
+		        @airport_origin_position = {
 		        	:wait_time => @wait_time,
 		        	:airport_latitude => tsa_airport_response['latitude'],
 		        	:airport_longitude => tsa_airport_response['longitude']
 		        }
+
+
+		        @airport_destination_position = getAirportCoordinates(@flight.destination)
 		    end
 
 	end
 
 	private
+
+	def getAirportCoordinates(short_code)
+
+		tsa_airport_url = 'http://apps.tsa.dhs.gov/mytsawebservice/GetAirportCheckpoints.ashx?ap=' + short_code
+
+		tsa_airport_response = JSON.parse(Net::HTTP.get(URI.parse(tsa_airport_url)))[0]["airport"]
+		
+			airport_position = {
+					        	:airport_latitude => tsa_airport_response['latitude'],
+					        	:airport_longitude => tsa_airport_response['longitude']
+					        }
+			return airport_position
+
+		
+	end
+
+
 
 	def getWaitTime(ap)
 

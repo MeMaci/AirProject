@@ -1,14 +1,14 @@
 
   <div class="row">
-    <div class="card hoverable blue lighten-5">
-        <div class="card-action">
+    <div class="card hoverable blue lighten-4">
+        <div class="card-action blue lighten-4">
 
       <ul class="collection with-header">
-        <li class="collection-header"><h4>Airport</h4></li>
+        <li class="collection-header blue lighten-4"><h4>Airport</h4></li>
 
 		  <% @flights.each do |flight|%>
 		    	<a href="<%=user_flight_path(current_user.id, flight.id)%>" class="collection-item">
-					<%=flight.airport%>
+					<%=flight.airport%> to <%=flight.destination%>
 				</a>
 				<a href="<%=user_flight_path(current_user.id, flight.id)%>"><button class="btn waves-effect waves-light red" type="submit">View<i class="material-icons right">send</i></button>
 				</a>
@@ -18,10 +18,15 @@
 
 		  <% end %>
       </ul>
-		</div>
-	</div>
+    </div>
+  </div>
+      <div class="center col s12">
+        <a href="<%=new_flight_path%>" ><button class="waves-effect waves-light btn" type="submit" >New Entry</button></a>
+      </div>
 </div>
-   	<%=link_to "Add New", new_flight_path%>
+
+
+
 
 
    	

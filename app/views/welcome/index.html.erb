@@ -3,7 +3,7 @@
 <div class="row">
   <div class= "col s12">
     <% if user_signed_in? %>
-      <span class="caption left-align"><h5><%= greet%><%=current_user.name %></h5></span> 
+      <span class="caption left-align"><h5><%= greet%> <%=current_user.name %></h5></span> 
 
     <% else %>
     <% end %>
@@ -15,7 +15,7 @@
 
       <div class="row">
          <div class="col s12 m6">
-            <div class="card hoverable blue lighten-5">
+            <div class="card perfect blue lighten-5">
               <div class="card-action">
                   <a class="blue-grey-text" href="">Miami International Airport (MIA)</a>
                </div>
@@ -25,7 +25,7 @@
             </div>
          </div>
             <div class="col s12 m6">
-            <div class="card hoverable blue lighten-5">
+            <div class="card perfect blue lighten-5">
               <div class="card-action">
                   <a class="blue-grey-text" href="">Fort Lauderdale-Hollywood International Airport (FLL)</a>
                </div>
@@ -35,38 +35,26 @@
                </div>
             </div>
          </div>
+
+        <div class="center col s12">
+          <a href="<%=flights_path%>" ><button class="waves-effect waves-light btn" type="submit" >Departure</button></a>
+        </div>
       </div>     
 
-      <div class="row">
-      <div class="col s12 m5">
-        <div class="card hoverable">
-          <span class="white-text">     <%=link_to "Select Airport", new_flight_path%>
-          </span>
-        </div>
-      </div>
-    </div> 
 <!-- TRYING TO SHOW GOOGLE/MAPS -->
 
-    <div id="map"></div>
+<!--     <div id="map"></div> -->
     
  <!-- TILL HERE -->
 
     <% else %>
-          <div class="caption left-align">
-            <h3>Heading to the airport <br> Save time here!</h3>
-          </div>
-            <img class="materialboxed" data-caption="No more ugly suprises!" width="750" src="http://img12.deviantart.net/c2c1/i/2015/124/c/8/bologna_airport_nr_2_by_enricomiglino-d1tjs1m.jpg">
-          <div class="caption left-align">
-            <h3>Enjoy your trip</h3>
-          </div>
+          <div class="center col 12">
+            <img class="center col s12" data-caption="No more ugly suprises!" width="750" src="http://img12.deviantart.net/c2c1/i/2015/124/c/8/bologna_airport_nr_2_by_enricomiglino-d1tjs1m.jpg">
+                  <h3>Heading to the airport <br> Save time here!</h3>
+            </div>
     <% end %>
 </div>
 
-
-
-
-
-</body>
 
 
 

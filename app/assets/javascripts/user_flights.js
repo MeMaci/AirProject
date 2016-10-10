@@ -76,8 +76,31 @@ function handle_google_time_estimate(response, status) {
 	console.log(response);
 	var google_estimate = response.rows[0].elements[0].duration.value;
 	var total_time_estimate = ((Math.floor(google_estimate / 60, 0)) + data.tsa_wait_time);
+	var hours = Math.floor(total_time_estimate / 60 , 0);
+	var mins = Math.floor(total_time_estimate % 60, 0);
+	var mins_text = ""
+	var hours_text = ""
 
-	$('#wait_time').text(total_time_estimate);
+	if (hours >= 1) {
+		if (hours === 1){
+			hours_text = hours + " Hour "
+		}
+		else {
+			hours_text = hours + " Hours "
+		}
+	}
+
+	if (mins >= 1) {
+		if (mins === 1){
+			mins_text = mins + " Minute"
+		}
+		else {
+			mins_text = mins + " Minutes"
+		}
+	}
+	$('#total_journey').show();
+	$('#wait_time').text(hours_text + mins_text);
+	
 }
 
 

@@ -23,9 +23,10 @@
                 params = { limit: 7 };
                 params.key = apiKey;
                 params.secret = 'be05af1f6f1e227';
-                initAutoSelect();
+                initAutoSelectForOrigin();
+                initAutoSelectForDeparture();
 
-            function initAutoSelect() {
+            function initAutoSelectForOrigin() {
                 apca = new apc('multi', params);
                 var autocompleteObj = {
                     source: function( request, response ) {
@@ -63,7 +64,7 @@
 
 // WANT TO DUPLICATE AUTO COMPLETE ON DESTINATION             
 
-                function initAutoSelect() {
+                function initAutoSelectForDeparture() {
                 apca = new apc('multi', params);
                 var autocompleteObj = {
                     source: function( request, response ) {
