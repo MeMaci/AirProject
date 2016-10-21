@@ -69,6 +69,7 @@ class FlightsController < ApplicationController
 		        	:airport_latitude => 0,
 		        	:airport_longitude => 0
 		        }
+
 			else	        
 
 		        tsa_checkpoint_response = JSON.parse(tsa_checkpoint_get)
@@ -90,8 +91,8 @@ class FlightsController < ApplicationController
 		        }
 
 
-		        @airport_destination_position = getAirportCoordinates(@flight.destination)
 		    end
+		    @airport_destination_position = getAirportCoordinates(@flight.destination)
 
 	end
 
@@ -101,14 +102,23 @@ class FlightsController < ApplicationController
 
 		tsa_airport_url = 'http://apps.tsa.dhs.gov/mytsawebservice/GetAirportCheckpoints.ashx?ap=' + short_code
 
-		tsa_airport_response = JSON.parse(Net::HTTP.get(URI.parse(tsa_airport_url)))[0]["airport"]
+		tsa_airport_response = JSON.parse(Net::HTTP.get(URI.parse(tsa_airport_url)))
+
+		if tsa_airport_response[0].nil? || tsa_airport_response.empty?
+
+			airport_position = {
+					        	:airport_latitude => 0,
+					        	:airport_longitude => 0
+					       	 }
+		
+		else
 		
 			airport_position = {
-					        	:airport_latitude => tsa_airport_response['latitude'],
-					        	:airport_longitude => tsa_airport_response['longitude']
+					        	:airport_latitude => tsa_airport_response[0]['airport']['latitude'],
+					        	:airport_longitude => tsa_airport_response[0]['airport']['longitude']
 					        }
-			return airport_position
 
+		end
 		
 	end
 
